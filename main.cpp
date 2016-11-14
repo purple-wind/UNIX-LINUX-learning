@@ -1,3 +1,5 @@
+#linux-3.13.0 gcc 5.3.0
+
 #include<stdio.h>
 #include<stdint.h>
 int main()
