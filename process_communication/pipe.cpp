@@ -11,3 +11,12 @@ Pipe::Pipe()
  return;
 }
 
+size_t Pipe::ReadPipe(unsigned char* buffer,size_t len)
+{
+ return read(pipe_fd[0],buffer,len);
+}
+
+size_t Pipe::WritePipe(unsigned char* buffer, size_t len)
+{
+  return write(pipe_fd[1],buffer,len);
+}

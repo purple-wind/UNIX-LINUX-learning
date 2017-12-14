@@ -6,6 +6,8 @@ class Pipe
 {
 public:
     Pipe();
+   size_t ReadPipe(unsigned char* buffer);
+   size_t WritePipe(unsigned char *buffer);
     private:
     int pipe_fd[2];
 };
