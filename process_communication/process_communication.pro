@@ -5,8 +5,10 @@ CONFIG -= qt
 
 SOURCES += \
     pipe.cpp \
-    main.cpp
+    main.cpp \
+    fifo.cpp
 
 HEADERS += \
-    pipe.h
+    pipe.h \
+    fifo.h
 
