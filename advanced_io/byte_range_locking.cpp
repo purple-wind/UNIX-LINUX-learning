@@ -70,13 +70,16 @@ void father_process()
     {
         WRITE_LOCK(fd,0,SEEK_SET,0);//加一把写锁
         write(fd,"12345",5);
-        UNLOCK(fd,0,SEEK_SET,0);
+        //        UNLOCK(fd,0,SEEK_SET,0);
     }
+    printf("father process\n");
+    sleep(30);
 
 }
 
-void child_process()
+void child_process_rclock()
 {
+    sleep(1);
     int fd=open("./test_record.txt",O_RDWR|O_CREAT|O_NONBLOCK,FILE_MODE);
     if(fd<0)
     {
