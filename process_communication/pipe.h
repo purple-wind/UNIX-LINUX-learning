@@ -7,13 +7,10 @@ class Pipe
 {
 public:
     Pipe();
-<<<<<<< HEAD
    size_t ReadPipe(unsigned char* buffer, size_t len);
    size_t WritePipe(unsigned char *buffer, size_t len);
     private:
-=======
 private:
->>>>>>> origin/master
     int pipe_fd[2];
 };
 
