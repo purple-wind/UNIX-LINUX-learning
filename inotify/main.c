@@ -3,8 +3,10 @@
  发生变化则事件被通知；
  简单示例:
  */
- #include<sys/inotify.h>
- #include<syslog.h>
+#include<sys/inotify.h>
+#include<syslog.h>
+#include<unistd.h>
+#include<stdio.h>
 #define EVENT_BUF_LEN 256
 #define EVENT_SIZE 8
  int test_inotify(void)
