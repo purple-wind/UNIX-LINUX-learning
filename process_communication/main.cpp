@@ -72,7 +72,9 @@ int main(int agrc,char* argv[] )
     }
     case (int)ExecProcess::SOCK:
     {
-
+        clockid_t clock_id;
+        struct timespec time_buf;
+        clock_gettime(clock_id,&time_buf);
         break;
     }
     case (int)ExecProcess::SHARE_MEM:
