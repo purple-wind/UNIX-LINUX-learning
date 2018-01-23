@@ -5,9 +5,11 @@
 #include <sys/epoll.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <vector>
 #include "pipe.h"
 #include "fifo.h"
-#include <sys/stat.h>
+#include "shm.h"
 enum class ExecProcess{
     PIPE,FIFO,SOCK,SHARE_MEM
 };
@@ -79,11 +81,36 @@ int main(int agrc,char* argv[] )
     }
     case (int)ExecProcess::SHARE_MEM:
     {
+        std::vector<pid_t>pid_vec(2);
+        Shm share_memory;
+        for(int i=0;i<2;i++)
+        {
+            pid_t pid=fork();
+            if(pid<0)
+                return -1;
+            else if(pid==0)
+            {
+                process_test();
+                exit(-1);
+            }
+            else
+                pid_vec[i]=pid;
+        }
+        while(true)
+        {
+            if(waitpid(pid_vec[0],nullptr,WNOHANG)!=0 && waitpid(pid_vec[1],nullptr,WNOHANG))
+                break;
+        };
+
+        share_memory.get_shminfo();
+        share_memory.delete_shm();
         break;
     }
     default :
         break;
     }
+
+
 
     return 0;
 }

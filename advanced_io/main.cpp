@@ -32,7 +32,7 @@ int main(int argc,char** argv)
         }
         break;
     }
-    case (int)ExecProcess::MEMMAP:
+    case (int)ExecProcess::MEMMAP://内存映射
     {
 
         break;

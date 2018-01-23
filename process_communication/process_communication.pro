@@ -6,9 +6,11 @@ INCLUDEPATH+=/usr/include/x86_64-linux-gnu/
 SOURCES += \
     pipe.cpp \
     main.cpp \
-    fifo.cpp
+    fifo.cpp \
+    shm.cpp
 
 HEADERS += \
     pipe.h \
-    fifo.h
-
+    fifo.h \
+    shm.h
+LIBS+=-lpthread
