@@ -79,6 +79,7 @@ void test_mem() __attribute__((ifunc ("test_mem_resolver")));
 #ifdef __cplusplus
 extern "C"{
 #endif
+/*该函数会在进程全局初始化时执行，在main函数之前运行,且只会执行一次去决定要使用的函数，在进程的整个生命期内都使用该选中函数*/
 void (*test_mem_resolver(void))()
 {
     int type = get_config();
