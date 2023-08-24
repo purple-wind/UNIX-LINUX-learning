@@ -2,7 +2,7 @@
 #include<signal.h>
 #include<unistd.h>
 #include<iostream>
-
+//注意:编译该代码时需要链接pthread库，否则进程不会死锁
 pthread_mutex_t lock;
 void cb(int sig)
 {
